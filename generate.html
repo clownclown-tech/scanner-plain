@@ -1,0 +1,128 @@
+<br>
+<br>
+
+<div style="text-align: center;">
+    <input class="form-label" type="text" id="qrCodeValue" value="www.google.com" placeholder="Enter QR code value">
+</div>
+<div class="container">
+    <button id="autoclickButton" class="btn btn-secondary" onclick="generateQRCode()">Generate QR Code</button>
+</div>
+  <div style="animation: myAnim 2s ease 0s 1 normal forwards;"id="qrcode"></div>
+
+
+<br>
+
+
+<div class="d-flex justify-content-evenly">
+  <button style="width: 96px;"class="btn btn-dark" id="print" onclick="printPage()">Print</button>
+  <%# <button class="btn btn-success" onclick="saveQRCodeToLocalStorage()">save to List</button> %>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+
+<script>
+
+    window.onload = function() {
+      document.getElementById("autoclickButton").click();
+      console.log("miau");
+    }
+
+
+
+  function generateQRCode() {
+    const qrCodeValue = document.getElementById('qrCodeValue').value;
+    const qrcodeDiv = document.getElementById('qrcode');
+
+    // Clear the previous QR code, if any
+    qrcodeDiv.innerHTML = '';
+
+    // Create a new QR code instance
+    const qrcode = new QRCode(qrcodeDiv, {
+      text: qrCodeValue,
+      width: 256,
+      height: 256,
+    });
+  }
+
+
+
+
+  function generateBarcode() {
+    const barcodeValue = document.getElementById('barcodeValue').value;
+    const barcodeDiv = document.getElementById('barcode');
+
+    // Clear the previous barcode, if any
+    barcodeDiv.innerHTML = '';
+
+    // Create a new canvas element to render the barcode
+    const canvas = document.createElement('canvas');
+    JsBarcode(canvas, barcodeValue, {
+      format: 'CODE128',
+      displayValue: true,
+      fontSize: 14,
+      width: 2,
+      height: 100
+    });
+
+    // Append the canvas to the barcode div
+    barcodeDiv.appendChild(canvas);
+  }
+
+
+    function printPage() {
+      window.print();
+    }
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+<style>
+
+.container {
+  display: flex;
+  justify-content: center; /* Center the button horizontally inside the container */
+  align-items: center; /* Center the button vertically inside the container */
+}
+
+
+@keyframes myAnim {
+	0% {
+		animation-timing-function: ease-out;
+		transform: scale(1);
+		transform-origin: center center;
+	}
+
+	10% {
+		animation-timing-function: ease-in;
+		transform: scale(0.91);
+	}
+
+	17% {
+		animation-timing-function: ease-out;
+		transform: scale(0.98);
+	}
+
+	33% {
+		animation-timing-function: ease-in;
+		transform: scale(0.87);
+	}
+
+	45% {
+		animation-timing-function: ease-out;
+		transform: scale(1);
+	}
+}
+</style>

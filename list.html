@@ -1,0 +1,83 @@
+<br>
+<div class="d-flex justify-content-center">
+  <div id="Links"></div>
+  <br>
+  <br>
+</div>
+<br>
+
+<div class="d-flex justify-content-evenly">
+  <button id="load" class="btn btn-secondary" onclick="loadTextFromLocalStorage()">Load</button>
+  <button id="reset" class="btn btn-secondary" onclick="resetList()">Reset List</button>
+</div>
+
+
+
+
+<script>
+
+  function resetList() {
+
+      let texts = [];
+
+
+
+      // Save the updated array back to local storage
+      localStorage.setItem('savedTexts', JSON.stringify(texts));
+      loadTextFromLocalStorage();
+
+
+  }
+
+
+  // Function to load texts from local storage and display them as links
+  function loadTextFromLocalStorage() {
+    const savedTextsContainer = document.getElementById('Links');
+    savedTextsContainer.innerHTML = ''; // Clear previous content
+
+    const savedTexts = JSON.parse(localStorage.getItem('savedTexts'));
+
+    if (savedTexts && savedTexts.length > 0) {
+      // Loop through each saved text and create anchor tags to display them
+      for (let i = 0; i < savedTexts.length; i++) {
+        const text = savedTexts[i];
+
+        // Create an anchor tag and set its text and href attributes
+        const anchorTag = document.createElement('a');
+        anchorTag.href = '#';
+        anchorTag.innerText = text;
+        anchorTag.style.display = 'block'; // To display each text on a new line
+
+        // Append the anchor tag to the container
+        savedTextsContainer.appendChild(anchorTag);
+      }
+    } else {
+      alert('No texts found in local storage!');
+    }
+  }
+
+   function checkLocalStorage(key) {
+    const value = localStorage.getItem(key);
+    if (value) {
+      console.log(`Value for key "${key}" exists in local storage: ${value}`);
+      return true;
+    } else {
+      console.log(`Value for key "${key}" does not exist in local storage.`);
+      return false;
+    }
+  }
+
+</script>
+
+<script>
+        // Function to auto-click the button when the site is loaded
+        function autoClickButton() {
+            const button = document.getElementById('load');
+
+            button.click();
+
+        }
+
+        // Register the function to be called when the site is loaded
+        window.onload = autoClickButton();
+</script>
