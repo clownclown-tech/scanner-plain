@@ -16,16 +16,16 @@
 
 
 
-<!-- <%= javascript_pack_tag("basic-qr-code-reader") %> -->
-<script src="basic-qrcode-reader.js"></script>
 
 
-<!-- <%= audio_tag "beep.mp3", id: "beep-audio"%> -->
+<audio id= "beep-audio" src="beep.mp3" type="audio/mpeg">
 
-<audio controls>
-  <source src="beep.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+<script type="text/javascript" src="https://unpkg.com/@zxing/library@latest/umd/index.min.js"></script>
+
+<script type="module" src="basic-qrcode-reader.js"></script>
+
+
+
 
 
 <script>

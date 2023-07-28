@@ -1,13 +1,17 @@
-import { BrowserQRCodeReader } from '@zxing/library';
 
-const codeReader = new BrowserQRCodeReader();
+
+const codeReader = new ZXing.BrowserMultiFormatReader()
+console.log('ZXing code reader initialized')
+
+
+
 
 codeReader
   .decodeFromInputVideoDevice(undefined, 'video')
   .then((result) => {
     // process the result
 
-    document.getElementById('beep-audio').play()
+    // document.getElementById('beep-audio').play()
 
     return result
 
