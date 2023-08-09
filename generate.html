@@ -15,8 +15,15 @@
 
 <div class="d-flex justify-content-evenly">
   <button style="width: 96px;"class="btn btn-dark" id="print" onclick="printPage()">Print</button>
-  <%# <button class="btn btn-success" onclick="saveQRCodeToLocalStorage()">save to List</button> %>
+  <button class="btn btn-success" onclick="saveQRCodeToLocalStorage()">save to List</button>
 </div>
+
+<nav>
+  <button class="btn btn-secondary" onclick="window.location.href = 'list.html';">List</button>
+  <button class="btn btn-secondary" onclick="window.location.href = 'index.html';">Scan</button>
+  <button class="btn btn-secondary" onclick="window.location.href = 'generate.html';">Generate</button>
+</nav>
+
 
 
 
@@ -76,6 +83,28 @@
     function printPage() {
       window.print();
     }
+
+    // Function to save text to local storage
+  function saveQRCodeToLocalStorage() {
+    const textArea = document.getElementById('qrCodeValue').value;
+    const text = textArea.trim();
+
+    if (text !== '') {
+      // Retrieve the existing texts from local storage or create an empty array
+      let texts = JSON.parse(localStorage.getItem('savedTexts')) || [];
+
+      // Append the new text to the array
+      texts.push(text);
+
+      // Save the updated array back to local storage
+      localStorage.setItem('savedTexts', JSON.stringify(texts));
+
+      textArea.value = '';
+      alert('Text saved to local storage!');
+    } else {
+      alert('Please enter a text to save.');
+    }
+  }
 
 
 </script>
