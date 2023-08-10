@@ -1,0 +1,26 @@
+{
+  "name": "scanner-new",
+  "version": "1.0.0",
+  "description": "a barcode scanner",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clownclown-tech/scanner-plain.git"
+  },
+  "author": "kern",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clownclown-tech/scanner-plain/issues"
+  },
+  "homepage": "https://github.com/clownclown-tech/scanner-plain#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.4.3"
+  }
+}
