@@ -26,6 +26,10 @@ app.get("/index.html", (req, res) => {
 });
 
 
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+
 app.get("/basic-qrcode-reader.js", (req, res) => {
   res.sendFile(path.join(__dirname, "assets", "basic-qrcode-reader.js"));
 });
