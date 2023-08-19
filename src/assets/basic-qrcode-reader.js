@@ -11,7 +11,7 @@ codeReader
   .then((result) => {
     // process the result
 
-    // document.getElementById('beep-audio').play()
+    document.getElementById('beep-audio').play()
 
     return result
 
