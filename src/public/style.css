@@ -21,3 +21,7 @@ body {
 #qrcode {
   text-align: -webkit-center;
 }
+
+.navbar .btn {
+  width: 90px;
+}
