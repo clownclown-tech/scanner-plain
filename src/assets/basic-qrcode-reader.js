@@ -22,6 +22,8 @@ codeReader
   }).then((result) => {
     console.log(result.text)
     document.getElementById('result').textContent = result.text
+    document.getElementById('result').href = result.text
+
 
     // setTimeout(function(){window.location.replace(result.text)} , 550);
 
